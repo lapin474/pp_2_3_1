@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Детали пользователя</title>
+</head>
+<body>
+<h1>Детали пользователя</h1>
+
+<p><strong>Имя: </strong><span th:text="${user.firstName}"></span></p>
+<p><strong>Фамилия: </strong><span th:text="${user.lastName}"></span></p>
+<p><strong>Email: </strong><span th:text="${user.email}"></span></p>
+
+<br/>
+<a th:href="@{/users}">Назад к списку</a>
+</body>
+</html>

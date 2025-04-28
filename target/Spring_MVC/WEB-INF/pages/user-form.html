@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма пользователя</title>
+</head>
+<body>
+
+<h1 th:text="${user == null} ? 'Создание пользователя' : 'Редактирование пользователя'"></h1>
+
+<form th:if="${user == null}" th:action="@{/users/create}" method="post">
+    <label>Имя:</label>
+    <input type="text" name="firstName" required/><br/><br/>
+
+    <label>Фамилия:</label>
+    <input type="text" name="lastName" required/><br/><br/>
+
+    <label>Email:</label>
+    <input type="email" name="email" required/><br/><br/>
+
+    <button type="submit">Создать</button>
+</form>
+
+<form th:if="${user != null}" th:action="@{/users/update}" method="post">
+    <input type="hidden" name="id" th:value="${user.id}"/>
+
+    <label>Имя:</label>
+    <input type="text" name="firstName" th:value="${user.firstName}" required/><br/><br/>
+
+    <label>Фамилия:</label>
+    <input type="text" name="lastName" th:value="${user.lastName}" required/><br/><br/>
+
+    <label>Email:</label>
+    <input type="email" name="email" th:value="${user.email}" required/><br/><br/>
+
+    <button type="submit">Обновить</button>
+</form>
+
+<br/>
+<a th:href="@{/users}">Назад к списку</a>
+</body>
+</html>
