@@ -3,15 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Детали пользователя</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        p strong {
+            color: #333;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+
 <h1>Детали пользователя</h1>
 
-<p><strong>Имя: </strong><span th:text="${user.firstName}"></span></p>
-<p><strong>Фамилия: </strong><span th:text="${user.lastName}"></span></p>
-<p><strong>Email: </strong><span th:text="${user.email}"></span></p>
+<div class="container">
+    <p><strong>Имя: </strong><span th:text="${user.firstName}"></span></p>
+    <p><strong>Фамилия: </strong><span th:text="${user.lastName}"></span></p>
+    <p><strong>Email: </strong><span th:text="${user.email}"></span></p>
 
-<br/>
-<a th:href="@{/users}">Назад к списку</a>
+    <a th:href="@{/users}" class="back-link">Назад к списку</a>
+</div>
+
 </body>
 </html>
