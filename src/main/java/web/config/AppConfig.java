@@ -39,21 +39,18 @@ public class AppConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+        Properties jpaProperties = new Properties();
+        jpaProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        jpaProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        jpaProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        jpaProperties.setProperty("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setPackagesToScan("web");
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        factoryBean.setJpaProperties(hibernateProperties());
+        factoryBean.setJpaProperties(jpaProperties);
         return factoryBean;
-    }
-
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
-        properties.setProperty("hibernate.show_sql", "true");
-        properties.setProperty("hibernate.format_sql", "true");
-        return properties;
     }
 
     @Bean

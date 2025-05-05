@@ -43,4 +43,21 @@ public class UserServiceImpl implements UserService {
     public User showUser(Long id) {
         return userDao.showUser(id);
     }
+
+    @Override
+    public void createNewUser(String firstName, String lastName, String email) {
+        User user = new User(firstName, lastName, email);
+        userDao.saveUser(user);
+    }
+
+    @Override
+    public void updateUserFields(Long id, String firstName, String lastName, String email) {
+        User user = userDao.showUser(id);
+        if (user != null) {
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setEmail(email);
+            userDao.updateUser(id, user);
+        }
+    }
 }

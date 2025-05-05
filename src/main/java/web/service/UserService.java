@@ -14,4 +14,8 @@ public interface UserService {
     void updateUser(Long id, User user);
 
     User showUser(Long id);
+
+    void createNewUser(String firstName, String lastName, String email);
+
+    void updateUserFields(Long id, String firstName, String lastName, String email);
 }

@@ -2,8 +2,6 @@
 
 package web.dao;
 
-import jakarta.persistence.TypedQuery;
-import jakarta.transaction.Transactional;
 import web.model.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

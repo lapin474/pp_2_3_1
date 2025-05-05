@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
-import web.service.UserServiceImpl;
 
 import java.util.List;
 
@@ -39,8 +38,7 @@ public class UserController {
             @RequestParam("lastName") String lastName,
             @RequestParam("email") String email
     ) {
-        User user = new User(firstName, lastName, email);
-        userService.saveUser(user);
+        userService.createNewUser(firstName, lastName, email);
         return "redirect:/users";
     }
 
@@ -58,18 +56,7 @@ public class UserController {
             @RequestParam("lastName") String lastName,
             @RequestParam("email") String email
     ) {
-
-        User user = userService.showUser(id);
-
-        if (user != null) {
-
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setEmail(email);
-
-            userService.updateUser(id, user);
-        }
-
+        userService.updateUserFields(id, firstName, lastName, email);
         return "redirect:/users";
     }
 
